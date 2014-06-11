@@ -1,5 +1,6 @@
-# debuginfo-without-sources
-#define debug_package	%{nil}
+# debuginfo-without-sources 
+# badness 50 WTF ???
+%define debug_package	%{nil}
 
 Name:           mpv
 Version:        0.3.10
