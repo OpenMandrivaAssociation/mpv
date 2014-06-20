@@ -3,7 +3,7 @@
 %define debug_package	%{nil}
 
 Name:           mpv
-Version:        0.3.10
+Version:        0.3.11
 Release:        1
 Summary:        Movie player playing most video formats and DVDs
 Group:		Video
