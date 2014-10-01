@@ -3,7 +3,7 @@
 %define debug_package	%{nil}
 
 Name:           mpv
-Version:        0.3.10
+Version:        0.6.0
 Release:        1
 Summary:        Movie player playing most video formats and DVDs
 Group:		Video
@@ -19,7 +19,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  ladspa-devel
 BuildRequires:  ffmpeg-devel
 BuildRequires:  jpeg-devel
-BuildRequires:  mng-devel
+BuildRequires:  pkgconfig(libmng)
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(libquvi)
 BuildRequires:  pkgconfig(libv4lconvert)
@@ -59,7 +59,6 @@ BuildRequires:  pkgconfig(xv)
 BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(luajit)
-BuildRequires:  python-rst2pdf
 BuildRequires:  texlive-cmap
 BuildRequires:  texlive-preprint
 BuildRequires:  texlive-caption
@@ -85,7 +84,7 @@ output methods are supported.
 
 %prep
 %setup -q
-%patch0 -p1
+%apply_patches
 
 cp %{SOURCE1} waf
 chmod 0755 waf
@@ -100,9 +99,7 @@ CCFLAGS="%{optflags}" \
     --confdir="%{_sysconfdir}/%{name}" \
     --enable-joystick \
     --enable-lirc \
-    --enable-radio \
-    --enable-radio-capture \
-    --disable-sdl --disable-sdl2 \
+    --disable-sdl1 --disable-sdl2 \
     --disable-build-date \
     --disable-debug
     
