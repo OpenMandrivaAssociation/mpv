@@ -3,7 +3,7 @@
 %define debug_package	%{nil}
 
 Name:           mpv
-Version:        0.6.0
+Version:        0.6.2
 Release:        1
 Summary:        Movie player playing most video formats and DVDs
 Group:		Video
@@ -31,7 +31,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(caca)
-BuildRequires:  pkgconfig(cucul)
 BuildRequires:  pkgconfig(dri)
 BuildRequires:  pkgconfig(dvdnav)
 BuildRequires:  pkgconfig(dvdread)
