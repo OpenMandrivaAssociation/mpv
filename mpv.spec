@@ -71,6 +71,7 @@ BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  krb5-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  imagemagick 
+BuildRequires:	python-docutils
 
 Requires:       hicolor-icon-theme
 
