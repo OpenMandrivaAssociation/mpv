@@ -1,10 +1,11 @@
-# debuginfo-without-sources 
-# badness 50 WTF ???
-%define debug_package	%{nil}
+%define debug_package %{nil}
+%define major		1
+%define libname		%mklibname %{name} %{major}
+%define devname		%mklibname %{name} -d
 
 Name:           mpv
 Version:        0.7.2
-Release:        1
+Release:        2
 Summary:        Movie player playing most video formats and DVDs
 Group:		Video
 License:        GPLv2+
@@ -72,8 +73,12 @@ BuildRequires:  krb5-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  imagemagick 
 BuildRequires:	python-docutils
+BuildRequires:	linux-userspace-headers
 
 Requires:       hicolor-icon-theme
+
+Suggests:	youtube-dl >= 2015.01.16
+
 
 %description
 Mpv is a movie player based on MPlayer and mplayer2. It supports a wide variety
@@ -81,6 +86,57 @@ of video file formats, audio and video codecs, and subtitle types. Special
 input URL types are available to read input from a variety of sources other
 than disk files. Depending on platform, a variety of different video and audio
 output methods are supported.
+
+
+%files
+%doc LICENSE README.md Copyright etc/example.conf etc/input.conf
+%{_bindir}/%{name}
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/*/apps/%{name}.*
+%{_mandir}/man1/%{name}.*
+%dir %{_sysconfdir}/%{name}
+%config(noreplace) %{_sysconfdir}/%{name}/encoding-profiles.conf
+
+#------------------------------------
+%package -n %{libname}
+Summary:	Library for %{name}
+Group:		System/Libraries
+
+%description -n %{libname}
+Mpv is a movie player based on MPlayer and mplayer2. It supports a wide variety
+of video file formats, audio and video codecs, and subtitle types. Special
+input URL types are available to read input from a variety of sources other
+than disk files. Depending on platform, a variety of different video and audio
+output methods are supported.
+
+%files -n %{libname}
+%doc LICENSE README.md Copyright
+%{_libdir}/*.so.*
+
+#------------------------------------
+
+%package -n %{devname}
+Summary:	Development files for %{name}
+Group:		Development/C
+Requires:	%{libname} = %{EVRD}
+Provides:	%{name}-devel = %{EVRD}
+
+%description -n %{devname}
+Mpv is a movie player based on MPlayer and mplayer2. It supports a wide variety
+of video file formats, audio and video codecs, and subtitle types. Special
+input URL types are available to read input from a variety of sources other
+than disk files. Depending on platform, a variety of different video and audio
+output methods are supported.
+
+%files -n %{devname}
+%doc LICENSE README.md Copyright
+%dir %{_includedir}/%{name}
+%{_includedir}/%{name}/client.h
+%{_includedir}/%{name}/qthelper.hpp
+%{_libdir}/*.so
+%{_libdir}/pkgconfig/%{name}.pc
+
+#----------------------------------------------------------------------------
 
 %prep
 %setup -q
@@ -92,41 +148,28 @@ chmod 0755 waf
 %build
 CCFLAGS="%{optflags}" \
 ./waf configure \
-    --prefix="%{_prefix}" \
-    --bindir="%{_bindir}" \
-    --mandir="%{_mandir}" \
-    --docdir="%{_docdir}/%{name}" \
-    --confdir="%{_sysconfdir}/%{name}" \
-    --enable-joystick \
-    --enable-lirc \
-    --disable-sdl1 --disable-sdl2 \
-    --disable-build-date \
-    --disable-debug
+	--prefix="%{_prefix}" \
+	--bindir="%{_bindir}" \
+	--mandir="%{_mandir}" \
+	--libdir="%{_libdir}" \
+	--docdir="%{_docdir}/%{name}" \
+	--confdir="%{_sysconfdir}/%{name}" \
+	--enable-joystick \
+	--enable-lirc \
+	--disable-sdl1 --disable-sdl2 \
+	--disable-build-date \
+	--disable-debug \
+	--enable-openal \
+	--enable-cdda \
+	--enable-libmpv-shared \
+	--disable-debug
     
 ./waf build --verbose 
 
 %install
 ./waf --destdir=%{buildroot} install 
 
-# Default config files
-install -Dpm 644 etc/example.conf %{buildroot}%{_sysconfdir}/%{name}/%{name}.conf
-install -Dpm 644 etc/input.conf %{buildroot}%{_sysconfdir}/%{name}/input.conf
-desktop-file-install etc/mpv.desktop
-
-for RES in 16 32 64; do
-  install -Dpm 644 etc/mpv-icon-8bit-${RES}x${RES}.png %{buildroot}%{_datadir}/icons/hicolor/${RES}x${RES}/apps/%{name}.png
-done
-
-%files
-%doc LICENSE README.md Copyright
-%{_bindir}/%{name}
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.*
-%{_mandir}/man1/%{name}.*
-%dir %{_sysconfdir}/%{name}
-%config(noreplace) %{_sysconfdir}/%{name}/%{name}.conf
-%config(noreplace) %{_sysconfdir}/%{name}/encoding-profiles.conf
-%config(noreplace) %{_sysconfdir}/%{name}/input.conf
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 
 
