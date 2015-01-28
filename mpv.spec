@@ -4,8 +4,8 @@
 %define devname		%mklibname %{name} -d
 
 Name:           mpv
-Version:        0.7.2
-Release:        2
+Version:        0.7.3
+Release:        1
 Summary:        Movie player playing most video formats and DVDs
 Group:		Video
 License:        GPLv2+
