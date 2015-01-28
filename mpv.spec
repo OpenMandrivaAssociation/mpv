@@ -93,6 +93,7 @@ output methods are supported.
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
+%{_datadir}/zsh/site-functions/_mpv
 %{_mandir}/man1/%{name}.*
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/encoding-profiles.conf
@@ -162,7 +163,10 @@ CCFLAGS="%{optflags}" \
 	--enable-openal \
 	--enable-cdda \
 	--enable-libmpv-shared \
-	--disable-debug
+	--disable-debug \
+    --enable-cplayer \
+	--enable-zsh-comp \
+	--enable-portaudio
     
 ./waf build --verbose 
 
