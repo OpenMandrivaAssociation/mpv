@@ -4,7 +4,7 @@
 %define devname		%mklibname %{name} -d
 
 Name:           mpv
-Version:        0.8.0
+Version:        0.8.2
 Release:        1
 Summary:        Movie player playing most video formats and DVDs
 Group:		Video
@@ -72,7 +72,7 @@ BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  krb5-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  imagemagick 
-BuildRequires:	python-docutils
+BuildRequires:	python2-docutils
 BuildRequires:	linux-userspace-headers
 
 Requires:       hicolor-icon-theme
