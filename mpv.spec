@@ -73,6 +73,7 @@ BuildRequires:  krb5-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  imagemagick 
 BuildRequires:	python2-docutils
+BuildRequires:	python-docutils
 BuildRequires:	linux-userspace-headers
 
 Requires:       hicolor-icon-theme
