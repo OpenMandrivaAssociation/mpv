@@ -4,12 +4,12 @@
 %define libname		%mklibname %{name} %{major}
 %define devname		%mklibname %{name} -d
 # mrb build won't build in contrib without all repos, mrb included
-%define distsuffix mrb
+#define distsuffix mrb
 
 Summary:	Movie player playing most video formats and DVDs
 Name:		mpv
 Version:	0.9.1
-Release:	69
+Release:	1
 License:	GPLv2+
 Group:		Video
 Url:		http://%{name}.io/
