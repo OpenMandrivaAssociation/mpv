@@ -25,7 +25,7 @@ BuildRequires:	texlive-latex
 BuildRequires:	texlive-cmap
 BuildRequires:	texlive-preprint
 BuildRequires:	ladspa-devel
-BuildRequires:	ffmpeg-devel
+BuildRequires:	ffmpeg-devel >= 2.5.4
 BuildRequires:	jpeg-devel
 BuildRequires:	krb5-devel
 BuildRequires:	pkgconfig(libmng)
