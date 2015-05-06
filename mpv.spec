@@ -4,7 +4,7 @@
 %define devname		%mklibname %{name} -d
 
 Name:           mpv
-Version:        0.8.3
+Version:        0.9.1
 Release:        1
 Summary:        Movie player playing most video formats and DVDs
 Group:		Video
@@ -157,8 +157,6 @@ CCFLAGS="%{optflags}" \
 	--libdir="%{_libdir}" \
 	--docdir="%{_docdir}/%{name}" \
 	--confdir="%{_sysconfdir}/%{name}" \
-	--enable-joystick \
-	--enable-lirc \
 	--disable-sdl1 --disable-sdl2 \
 	--disable-build-date \
 	--disable-debug \
