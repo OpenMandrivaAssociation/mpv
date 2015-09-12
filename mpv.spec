@@ -4,16 +4,15 @@
 %define devname		%mklibname %{name} -d
 
 Name:           mpv
-Version:        0.9.2
-Release:        2
+Version:        0.10.0
+Release:        1
 Summary:        Movie player playing most video formats and DVDs
 Group:		Video
 License:        GPLv2+
 URL:            http://%{name}.io/
 Source0:        https://github.com/%{name}-player/%{name}/archive/v%{version}.tar.gz
 # latest stable waf
-Source1:        http://ftp.waf.io/pub/release/waf-1.8.5
-Patch0:         %{name}-config.patch
+Source1:        https://waf.io/pub/release/waf-1.8.12
 
 
 BuildRequires:  hicolor-icon-theme
@@ -163,7 +162,6 @@ CCFLAGS="%{optflags}" \
 	--enable-openal \
 	--enable-cdda \
 	--enable-libmpv-shared \
-	--disable-debug \
 	--enable-zsh-comp
     
 ./waf build --verbose 
