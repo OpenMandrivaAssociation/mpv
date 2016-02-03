@@ -4,7 +4,7 @@
 %define devname		%mklibname %{name} -d
 
 Name:           mpv
-Version:        0.14.0
+Version:        0.15.0
 Release:        1
 Summary:        Movie player playing most video formats and DVDs
 Group:		Video
@@ -89,7 +89,7 @@ output methods are supported.
 
 
 %files
-%doc LICENSE README.md Copyright etc/example.conf etc/input.conf
+%doc LICENSE README.md Copyright etc/input.conf
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
