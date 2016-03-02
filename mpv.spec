@@ -154,6 +154,7 @@ output methods are supported.
 cp -R %{SOURCE1} waf && chmod +x waf
 
 %build
+export LD_LIBRARY_PATH=%{_libdir}/samba/:$LD_LIBRARY_PATH
 LDFLAGS="%{ldflags} -lSDL" \
 CCFLAGS="%{optflags}" \
 ./waf configure \
