@@ -96,7 +96,7 @@ output methods are supported.
 
 
 %files
-%doc LICENSE README.md Copyright etc/example.conf etc/input.conf
+%doc LICENSE README.md Copyright etc/input.conf
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
