@@ -4,7 +4,7 @@
 %define devname		%mklibname %{name} -d
 
 Name:           mpv
-Version:        0.16.0
+Version:        0.17.0
 Release:        1
 Summary:        Movie player playing most video formats and DVDs
 Group:		Video
@@ -93,6 +93,7 @@ output methods are supported.
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
+%{_datadir}/icons/hicolor/symbolic/apps/mpv-symbolic.svg
 %{_datadir}/zsh/site-functions/_mpv
 %{_mandir}/man1/%{name}.*
 %dir %{_sysconfdir}/%{name}
@@ -171,7 +172,7 @@ CCFLAGS="%{optflags}" \
 %install
 ./waf --destdir=%{buildroot} install 
 
+mkdir -p %{buildroot}%{_sysconfdir}/%{name}/
+cp etc/encoding-profiles.conf %{buildroot}%{_sysconfdir}/%{name}/
+
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
-
-
-
