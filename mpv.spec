@@ -8,7 +8,7 @@
 
 Summary:	Movie player playing most video formats and DVDs
 Name:		mpv
-Version:	0.16.0
+Version:	0.17.0
 Release:	1
 License:	GPLv2+
 Group:		Video
@@ -100,6 +100,7 @@ output methods are supported.
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
+%{_datadir}/icons/hicolor/symbolic/apps/mpv-symbolic.svg
 %dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_mpv
 %{_mandir}/man1/%{name}.*
@@ -178,6 +179,8 @@ CCFLAGS="%{optflags}" \
 
 %install
 ./waf --destdir=%{buildroot} install
+mkdir -p %{buildroot}%{_sysconfdir}/%{name}/
+cp etc/encoding-profiles.conf %{buildroot}%{_sysconfdir}/%{name}/
 
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
