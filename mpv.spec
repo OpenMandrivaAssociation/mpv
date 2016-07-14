@@ -29,6 +29,7 @@ BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:	pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(caca)
 BuildRequires:  pkgconfig(dri)
