@@ -4,7 +4,7 @@
 %define devname		%mklibname %{name} -d
 
 Name:           mpv
-Version:        0.18.1
+Version:        0.22.0
 Release:        1
 Summary:        Movie player playing most video formats and DVDs
 Group:		Video
@@ -12,7 +12,7 @@ License:        GPLv2+
 URL:            http://%{name}.io/
 Source0:        https://github.com/%{name}-player/%{name}/archive/v%{version}.tar.gz
 # latest stable waf
-Source1:        https://waf.io/pub/release/waf-1.9.0
+Source1:        https://waf.io/pub/release/waf-1.9.3
 
 
 BuildRequires:  hicolor-icon-theme
@@ -136,6 +136,7 @@ output methods are supported.
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/client.h
 %{_includedir}/%{name}/opengl_cb.h
+%{_includedir}/%{name}/stream_cb.h
 %{_includedir}/%{name}/qthelper.hpp
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/%{name}.pc
@@ -165,11 +166,11 @@ CCFLAGS="%{optflags}" \
 	--enable-cdda \
 	--enable-libmpv-shared \
 	--enable-zsh-comp
-    
+
 ./waf build --verbose 
 
 %install
-./waf --destdir=%{buildroot} install 
+./waf --destdir=%{buildroot} install
 
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}/
 cp etc/encoding-profiles.conf %{buildroot}%{_sysconfdir}/%{name}/
