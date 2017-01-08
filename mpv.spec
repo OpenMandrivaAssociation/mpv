@@ -169,7 +169,7 @@ CCFLAGS="%{optflags}" \
 ./waf build --verbose
 
 %install
-./waf --destdir=%{buildroot} install 
+./waf --destdir=%{buildroot} install
 
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}/
 cp etc/encoding-profiles.conf %{buildroot}%{_sysconfdir}/%{name}/
