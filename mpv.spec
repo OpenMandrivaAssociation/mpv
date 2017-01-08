@@ -13,8 +13,6 @@ URL:            http://%{name}.io/
 Source0:        https://github.com/%{name}-player/%{name}/archive/%{name}-%{version}.tar.gz
 # latest stable waf
 Source1:        https://waf.io/pub/release/waf-1.9.3
-
-
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  ladspa-devel
 BuildRequires:  ffmpeg-devel
@@ -27,8 +25,13 @@ BuildRequires:  pkgconfig(liblircclient0)
 BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  perl
-BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gbm)
+BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(egl)
+BuildRequires:  pkgconfig(xrandr)
+BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libva-wayland)
 BuildRequires:	pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(caca)
@@ -71,7 +74,7 @@ BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  krb5-devel
 BuildRequires:  desktop-file-utils
-BuildRequires:  imagemagick 
+BuildRequires:  imagemagick
 BuildRequires:	python2-docutils
 BuildRequires:	python-docutils
 BuildRequires:	linux-userspace-headers
