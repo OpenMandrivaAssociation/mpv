@@ -4,13 +4,13 @@
 %define devname		%mklibname %{name} -d
 
 Name:           mpv
-Version:        0.22.0
+Version:        0.23.0
 Release:        1
 Summary:        Movie player playing most video formats and DVDs
 Group:		Video
 License:        GPLv2+
 URL:            http://%{name}.io/
-Source0:        https://github.com/%{name}-player/%{name}/archive/v%{version}.tar.gz
+Source0:        https://github.com/%{name}-player/%{name}/archive/%{name}-%{version}.tar.gz
 # latest stable waf
 Source1:        https://waf.io/pub/release/waf-1.9.3
 
@@ -75,9 +75,7 @@ BuildRequires:  imagemagick
 BuildRequires:	python2-docutils
 BuildRequires:	python-docutils
 BuildRequires:	linux-userspace-headers
-
 Requires:       hicolor-icon-theme
-
 Suggests:	youtube-dl >= 2015.01.16
 
 
@@ -151,6 +149,7 @@ cp %{SOURCE1} waf
 chmod 0755 waf
 
 %build
+%setup_compile_flags
 CCFLAGS="%{optflags}" \
 ./waf configure \
 	--prefix="%{_prefix}" \
@@ -167,7 +166,7 @@ CCFLAGS="%{optflags}" \
 	--enable-libmpv-shared \
 	--enable-zsh-comp
 
-./waf build --verbose 
+./waf build --verbose
 
 %install
 ./waf --destdir=%{buildroot} install
