@@ -1,3 +1,4 @@
 sources:
+  mpv-0.25.0.tar.gz: fe98e9afe0a5ed04ef957cb2d0bf014b5c6c6665
   waf-1.9.3: b05ed548d313741c1a0e09c69e7310e0f6f71848
-  v0.24.0.tar.gz: ade12ce6a626fdba5cbdb41444805f1ed3dfcb36
+  waf-1.9.7: f0b47d139d837eb247320495a535ba3aa24d0e3c
