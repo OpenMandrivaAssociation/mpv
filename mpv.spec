@@ -9,8 +9,8 @@ Release:	1
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
-URL:		http://%{name}.io/
-Source0:	https://github.com/%{name}-player/%{name}/archive/%{name}-%{version}.tar.gz
+URL:		http://mpv.io/
+Source0:	https://github.com/mpv-player/mpv/archive/%{name}-%{version}.tar.gz
 # latest stable waf
 Source1:	https://waf.io/pub/release/waf-1.9.7
 Patch0:		mpv-0.23.0-dont-overreact-to-ffmpeg-mismatch.patch
