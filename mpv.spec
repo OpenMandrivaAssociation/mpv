@@ -12,7 +12,7 @@ License:	GPLv2+
 URL:		http://mpv.io/
 Source0:	https://github.com/mpv-player/mpv/archive/v%{version}.tar.gz
 # latest stable waf
-Source1:	https://waf.io/pub/release/waf-1.9.7
+Source1:	https://waf.io/pub/release/waf-2.0.3
 Patch0:		mpv-0.23.0-dont-overreact-to-ffmpeg-mismatch.patch
 BuildRequires:	hicolor-icon-theme
 BuildRequires:	ladspa-devel
