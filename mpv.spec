@@ -16,12 +16,12 @@ Source1:	https://waf.io/pub/release/waf-2.0.3
 Patch0:		mpv-0.23.0-dont-overreact-to-ffmpeg-mismatch.patch
 BuildRequires:	hicolor-icon-theme
 BuildRequires:	ladspa-devel
-BuildRequires:	pkgconfig(libavutil) >= 56.6.100
-BuildRequires:	pkgconfig(libavcodec) >= 58.7.100
-BuildRequires:	pkgconfig(libavformat) >= 58.0.102
-BuildRequires:	pkgconfig(libswscale) >= 5.0.101
-BuildRequires:	pkgconfig(libavfilter) >= 7.0.101
-BuildRequires:	pkgconfig(libswresample) >= 3.0.100
+BuildRequires:	pkgconfig(libavutil) >= 55.58.100
+BuildRequires:	pkgconfig(libavcodec) >= 57.89.100
+BuildRequires:	pkgconfig(libavformat) >= 57.71.100
+BuildRequires:	pkgconfig(libswscale) >= 4.6.100
+BuildRequires:	pkgconfig(libavfilter) >= 6.82.100
+BuildRequires:	pkgconfig(libswresample) >= 2.7.100
 BuildRequires:	jpeg-devel
 BuildRequires:	pkgconfig(libmng)
 BuildRequires:	pkgconfig(libmpg123)
