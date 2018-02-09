@@ -4,19 +4,24 @@
 %define devname		%mklibname %{name} -d
 
 Name:		mpv
-Version:	0.27.0
-Release:	2
+Version:	0.28.0
+Release:	1
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
-URL:		http://%{name}.io/
-Source0:	https://github.com/%{name}-player/%{name}/archive/%{name}-%{version}.tar.gz
+URL:		http://mpv.io/
+Source0:	https://github.com/mpv-player/mpv/archive/v%{version}.tar.gz
 # latest stable waf
-Source1:	https://waf.io/pub/release/waf-1.9.7
+Source1:	https://waf.io/pub/release/waf-2.0.3
 Patch0:		mpv-0.23.0-dont-overreact-to-ffmpeg-mismatch.patch
 BuildRequires:	hicolor-icon-theme
 BuildRequires:	ladspa-devel
-BuildRequires:	ffmpeg-devel
+BuildRequires:	pkgconfig(libavutil) >= 56.6.100
+BuildRequires:	pkgconfig(libavcodec) >= 58.7.100
+BuildRequires:	pkgconfig(libavformat) >= 58.0.102
+BuildRequires:	pkgconfig(libswscale) >= 5.0.101
+BuildRequires:	pkgconfig(libavfilter) >= 7.0.101
+BuildRequires:	pkgconfig(libswresample) >= 3.0.100
 BuildRequires:	jpeg-devel
 BuildRequires:	pkgconfig(libmng)
 BuildRequires:	pkgconfig(libmpg123)
@@ -92,7 +97,7 @@ output methods are supported.
 
 
 %files
-%doc LICENSE README.md Copyright etc/input.conf
+%doc README.md Copyright etc/input.conf
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
@@ -115,7 +120,7 @@ than disk files. Depending on platform, a variety of different video and audio
 output methods are supported.
 
 %files -n %{libname}
-%doc LICENSE README.md Copyright
+%doc README.md Copyright
 %{_libdir}/*.so.*
 
 #------------------------------------
@@ -134,7 +139,7 @@ than disk files. Depending on platform, a variety of different video and audio
 output methods are supported.
 
 %files -n %{devname}
-%doc LICENSE README.md Copyright
+%doc README.md Copyright
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/client.h
 %{_includedir}/%{name}/opengl_cb.h
