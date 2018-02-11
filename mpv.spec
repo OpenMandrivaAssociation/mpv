@@ -12,7 +12,7 @@ License:	GPLv2+
 URL:		http://mpv.io/
 Source0:	https://github.com/mpv-player/mpv/archive/%{name}-%{version}.tar.gz
 # latest stable waf
-Source1:	https://waf.io/pub/release/waf-197
+Source1:	https://waf.io/pub/release/waf-1.9.7
 Patch0:		mpv-0.23.0-dont-overreact-to-ffmpeg-mismatch.patch
 BuildRequires:	hicolor-icon-theme
 BuildRequires:	ladspa-devel
@@ -91,14 +91,12 @@ BuildRequires:	linux-userspace-headers
 Requires:	hicolor-icon-theme
 Suggests:	youtube-dl >= 2015.01.16
 
-
 %description
 Mpv is a movie player based on MPlayer and mplayer2. It supports a wide variety
 of video file formats, audio and video codecs, and subtitle types. Special
 input URL types are available to read input from a variety of sources other
 than disk files. Depending on platform, a variety of different video and audio
 output methods are supported.
-
 
 %files
 %doc README.md Copyright etc/input.conf
