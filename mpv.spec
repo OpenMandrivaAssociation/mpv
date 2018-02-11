@@ -113,6 +113,7 @@ output methods are supported.
 %{_mandir}/man1/%{name}.*
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/encoding-profiles.conf
+%config(noreplace) %{_sysconfdir}/%{name}/mpv.conf
 
 #------------------------------------
 %package -n %{libname}
