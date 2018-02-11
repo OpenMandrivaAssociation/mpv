@@ -4,13 +4,13 @@
 %define devname		%mklibname %{name} -d
 
 Name:		mpv
-Version:	0.28.0
+Version:	0.28.1
 Release:	1
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
 URL:		http://mpv.io/
-Source0:	https://github.com/mpv-player/mpv/archive/v%{version}.tar.gz
+Source0:	https://github.com/mpv-player/mpv/archive/%{name}-%{version}.tar.gz
 # latest stable waf
 Source1:	https://waf.io/pub/release/waf-2.0.3
 Patch0:		mpv-0.23.0-dont-overreact-to-ffmpeg-mismatch.patch
@@ -37,8 +37,6 @@ BuildRequires:	pkgconfig(egl)
 BuildRequires:	pkgconfig(xrandr)
 BuildRequires:	pkgconfig(libarchive)
 BuildRequires:	pkgconfig(libpulse)
-BuildRequires:	pkgconfig(libva-wayland)
-BuildRequires:	pkgconfig(wayland-egl)
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(caca)
 BuildRequires:	pkgconfig(dri)
@@ -72,12 +70,18 @@ BuildRequires:	texlive-cmap
 BuildRequires:	texlive-preprint
 BuildRequires:	texlive-caption
 BuildRequires:	texlive-latex
+BuildRequires:	pkgconfig(dvdread)
+BuildRequires:	pkgconfig(dvdnav)
 BuildRequires:	pkgconfig(libguess)
+BuildRequires:	pkgconfig(libva-wayland)
+BuildRequires:	pkgconfig(wayland-egl)
+BuildRequires:	pkgconfig(wayland-protocols)
 BuildRequires:	pkgconfig(wayland-client)
 BuildRequires:	pkgconfig(wayland-cursor)
 BuildRequires:	pkgconfig(wayland-scanner)
 BuildRequires:	pkgconfig(wayland-server)
 BuildRequires:	pkgconfig(xkbcommon)
+BuildRequires:	vulkan-devel
 BuildRequires:	krb5-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	imagemagick
@@ -121,7 +125,7 @@ output methods are supported.
 
 %files -n %{libname}
 %doc README.md Copyright
-%{_libdir}/*.so.*
+%{_libdir}/*.so.%{major}*
 
 #------------------------------------
 
