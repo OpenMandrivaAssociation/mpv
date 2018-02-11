@@ -4,7 +4,7 @@
 %define devname		%mklibname %{name} -d
 
 Name:		mpv
-Version:	0.28.1
+Version:	0.27.1
 Release:	1
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
@@ -12,7 +12,7 @@ License:	GPLv2+
 URL:		http://mpv.io/
 Source0:	https://github.com/mpv-player/mpv/archive/%{name}-%{version}.tar.gz
 # latest stable waf
-Source1:	https://waf.io/pub/release/waf-2.0.3
+Source1:	https://waf.io/pub/release/waf-197
 Patch0:		mpv-0.23.0-dont-overreact-to-ffmpeg-mismatch.patch
 BuildRequires:	hicolor-icon-theme
 BuildRequires:	ladspa-devel
