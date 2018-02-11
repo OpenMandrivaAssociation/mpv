@@ -1,7 +1,7 @@
 %define debug_package %{nil}
-%define major		1
-%define libname		%mklibname %{name} %{major}
-%define devname		%mklibname %{name} -d
+%define major 1
+%define libname %mklibname %{name} %{major}
+%define devname %mklibname %{name} -d
 
 Name:		mpv
 Version:	0.28.1
@@ -13,6 +13,7 @@ URL:		http://mpv.io/
 Source0:	https://github.com/mpv-player/mpv/archive/%{name}-%{version}.tar.gz
 # latest stable waf
 Source1:	https://waf.io/pub/release/waf-2.0.3
+Source2:	mpv.conf
 Patch0:		mpv-0.23.0-dont-overreact-to-ffmpeg-mismatch.patch
 BuildRequires:	hicolor-icon-theme
 BuildRequires:	ladspa-devel
@@ -176,6 +177,10 @@ CCFLAGS="%{optflags}" \
 	--disable-debug \
 	--enable-openal \
 	--enable-cdda \
++	--enable-dvdread \
++	--enable-dvdnav \
++	--enable-dvbin \
++	--enable-tv \
 	--enable-libmpv-shared \
 	--enable-zsh-comp
 
@@ -186,5 +191,6 @@ CCFLAGS="%{optflags}" \
 
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}/
 cp etc/encoding-profiles.conf %{buildroot}%{_sysconfdir}/%{name}/
+cp %{SOURCE2} %{buildroot}%{_sysconfdir}/%{name}/mpv.conf
 
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
