@@ -15,6 +15,7 @@ Source0:	https://github.com/mpv-player/mpv/archive/%{name}-%{version}.tar.gz
 Source1:	https://waf.io/pub/release/waf-1.9.7
 Source2:	mpv.conf
 Patch0:		mpv-0.23.0-dont-overreact-to-ffmpeg-mismatch.patch
+Patch1:		0001-vaapi-Use-libva2-message-callbacks.patch
 BuildRequires:	hicolor-icon-theme
 BuildRequires:	ladspa-devel
 BuildRequires:	pkgconfig(libavutil) >= 55.58.100
