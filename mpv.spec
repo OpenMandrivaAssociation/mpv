@@ -90,6 +90,9 @@ BuildRequires:	python2-docutils
 BuildRequires:	python-docutils
 BuildRequires:	linux-userspace-headers
 Requires:	hicolor-icon-theme
+%ifnarch %{armx}
+Requires:	vdpau-drivers
+%endif
 Suggests:	youtube-dl >= 2015.01.16
 
 
