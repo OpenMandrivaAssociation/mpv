@@ -10,9 +10,9 @@ Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
 URL:		http://mpv.io/
-Source0:	https://github.com/mpv-player/mpv/archive/%{name}-%{version}.tar.gz
+Source0:	https://github.com/mpv-player/mpv/archive/v%{version}.tar.gz
 # latest stable waf
-Source1:	https://waf.io/pub/release/waf-2.0.3
+Source1:	https://waf.io/pub/release/waf-2.0.6
 Source2:	mpv.conf
 Patch0:		mpv-0.23.0-dont-overreact-to-ffmpeg-mismatch.patch
 BuildRequires:	hicolor-icon-theme
@@ -169,7 +169,7 @@ chmod 0755 waf
 %build
 %setup_compile_flags
 CCFLAGS="%{optflags}" \
-./waf configure \
+python2 ./waf configure \
 	--prefix="%{_prefix}" \
 	--bindir="%{_bindir}" \
 	--mandir="%{_mandir}" \
@@ -181,17 +181,17 @@ CCFLAGS="%{optflags}" \
 	--disable-debug \
 	--enable-openal \
 	--enable-cdda \
-+	--enable-dvdread \
-+	--enable-dvdnav \
-+	--enable-dvbin \
-+	--enable-tv \
+	--enable-dvdread \
+	--enable-dvdnav \
+	--enable-dvbin \
+	--enable-tv \
 	--enable-libmpv-shared \
 	--enable-zsh-comp
 
-./waf build --verbose
+python2 ./waf build --verbose
 
 %install
-./waf --destdir=%{buildroot} install
+python2 ./waf --destdir=%{buildroot} install
 
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}/
 cp etc/encoding-profiles.conf %{buildroot}%{_sysconfdir}/%{name}/
