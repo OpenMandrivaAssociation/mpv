@@ -4,13 +4,13 @@
 %define devname %mklibname %{name} -d
 
 Name:		mpv
-Version:	0.27.1
+Version:	0.27.2
 Release:	1
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
 URL:		http://mpv.io/
-Source0:	https://github.com/mpv-player/mpv/archive/%{name}-%{version}.tar.gz
+Source0:	https://github.com/mpv-player/mpv/archive/v%{version}.tar.gz
 # latest stable waf
 Source1:	https://waf.io/pub/release/waf-1.9.7
 Source2:	mpv.conf
