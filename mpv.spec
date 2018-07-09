@@ -5,7 +5,7 @@
 
 Name:		mpv
 Version:	0.28.2
-Release:	1
+Release:	2
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
@@ -103,6 +103,9 @@ output methods are supported.
 
 %files
 %doc README.md Copyright etc/input.conf
+%{_docdir}/%{name}/mplayer-input.conf
+%{_docdir}/%{name}/mpv.conf
+%{_docdir}/%{name}/restore-old-bindings.conf
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
