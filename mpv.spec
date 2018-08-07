@@ -4,13 +4,13 @@
 %define devname %mklibname %{name} -d
 
 Name:		mpv
-Version:	0.28.2
-Release:	2
+Version:	0.29.0
+Release:	1
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
 URL:		http://mpv.io/
-Source0:	https://github.com/mpv-player/mpv/archive/v%{version}.tar.gz
+Source0:	https://github.com/mpv-player/mpv/archive/%{name}-%{version}.tar.gz
 # latest stable waf
 Source1:	https://waf.io/pub/release/waf-2.0.6
 Source2:	mpv.conf
@@ -160,8 +160,7 @@ output methods are supported.
 #----------------------------------------------------------------------------
 
 %prep
-%setup -q
-%apply_patches
+%autosetup -p1
 
 cp %{SOURCE1} waf
 chmod 0755 waf
