@@ -5,14 +5,14 @@
 
 Name:		mpv
 Version:	0.29.0
-Release:	1
+Release:	2
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
 URL:		http://mpv.io/
 Source0:	https://github.com/mpv-player/mpv/archive/%{name}-%{version}.tar.gz
 # latest stable waf
-Source1:	https://waf.io/pub/release/waf-2.0.6
+Source1:	https://waf.io/pub/release/waf-2.0.10
 Source2:	mpv.conf
 Patch0:		mpv-0.23.0-dont-overreact-to-ffmpeg-mismatch.patch
 BuildRequires:	hicolor-icon-theme
@@ -154,6 +154,8 @@ output methods are supported.
 %{_includedir}/%{name}/opengl_cb.h
 %{_includedir}/%{name}/stream_cb.h
 %{_includedir}/%{name}/qthelper.hpp
+%{_includedir}/%{name}/render.h
+%{_includedir}/%{name}/render_gl.h
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/%{name}.pc
 
@@ -175,7 +177,7 @@ python2 ./waf configure \
 	--libdir="%{_libdir}" \
 	--docdir="%{_docdir}/%{name}" \
 	--confdir="%{_sysconfdir}/%{name}" \
-	--disable-sdl1 --disable-sdl2 \
+	--disable-sdl2 \
 	--disable-build-date \
 	--disable-debug \
 	--enable-openal \
