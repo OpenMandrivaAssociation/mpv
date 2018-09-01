@@ -86,7 +86,6 @@ BuildRequires:	vulkan-devel
 BuildRequires:	krb5-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	imagemagick
-BuildRequires:	python2-docutils
 BuildRequires:	python-docutils
 BuildRequires:	linux-userspace-headers
 Requires:	hicolor-icon-theme
@@ -170,7 +169,7 @@ chmod 0755 waf
 %build
 %setup_compile_flags
 CCFLAGS="%{optflags}" \
-python2 ./waf configure \
+python ./waf configure \
 	--prefix="%{_prefix}" \
 	--bindir="%{_bindir}" \
 	--mandir="%{_mandir}" \
@@ -189,10 +188,10 @@ python2 ./waf configure \
 	--enable-libmpv-shared \
 	--enable-zsh-comp
 
-python2 ./waf build --verbose
+python ./waf build --verbose
 
 %install
-python2 ./waf --destdir=%{buildroot} install
+python ./waf --destdir=%{buildroot} install
 
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}/
 cp etc/encoding-profiles.conf %{buildroot}%{_sysconfdir}/%{name}/
