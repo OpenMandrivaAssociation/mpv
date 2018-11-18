@@ -4,7 +4,7 @@
 %define devname %mklibname %{name} -d
 
 Name:		mpv
-Version:	0.27.2
+Version:	0.29.1
 Release:	2
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
@@ -12,7 +12,7 @@ License:	GPLv2+
 URL:		http://mpv.io/
 Source0:	https://github.com/mpv-player/mpv/archive/v%{version}.tar.gz
 # latest stable waf
-Source1:	https://waf.io/pub/release/waf-1.9.7
+Source1:	https://waf.io/pub/release/waf-2.0.11
 Source2:	mpv.conf
 Patch0:		mpv-0.23.0-dont-overreact-to-ffmpeg-mismatch.patch
 Patch1:		0001-vaapi-Use-libva2-message-callbacks.patch
@@ -87,7 +87,6 @@ BuildRequires:	vulkan-devel
 BuildRequires:	krb5-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	imagemagick
-BuildRequires:	python2-docutils
 BuildRequires:	python-docutils
 BuildRequires:	linux-userspace-headers
 Requires:	hicolor-icon-theme
@@ -105,6 +104,9 @@ output methods are supported.
 
 %files
 %doc README.md Copyright etc/input.conf
+%{_docdir}/%{name}/mplayer-input.conf
+%{_docdir}/%{name}/mpv.conf
+%{_docdir}/%{name}/restore-old-bindings.conf
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
@@ -153,6 +155,8 @@ output methods are supported.
 %{_includedir}/%{name}/opengl_cb.h
 %{_includedir}/%{name}/stream_cb.h
 %{_includedir}/%{name}/qthelper.hpp
+%{_includedir}/%{name}/render.h
+%{_includedir}/%{name}/render_gl.h
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/%{name}.pc
 
@@ -168,18 +172,22 @@ chmod 0755 waf
 %build
 %setup_compile_flags
 CCFLAGS="%{optflags}" \
-./waf configure \
+python ./waf configure \
 	--prefix="%{_prefix}" \
 	--bindir="%{_bindir}" \
 	--mandir="%{_mandir}" \
 	--libdir="%{_libdir}" \
 	--docdir="%{_docdir}/%{name}" \
 	--confdir="%{_sysconfdir}/%{name}" \
-	--disable-sdl1 --disable-sdl2 \
+	--disable-sdl2 \
 	--disable-build-date \
 	--disable-debug \
 	--enable-openal \
 	--enable-cdda \
+	--enable-dvdread \
+	--enable-dvdnav \
+	--enable-dvbin \
+	--enable-tv \
 	--enable-libmpv-shared \
 	--enable-dvdread \
 	--enable-dvdnav \
@@ -187,10 +195,10 @@ CCFLAGS="%{optflags}" \
 	--enable-tv \
 	--enable-zsh-comp
 
-./waf build --verbose
+python ./waf build --verbose
 
 %install
-./waf --destdir=%{buildroot} install
+python ./waf --destdir=%{buildroot} install
 
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}/
 cp etc/encoding-profiles.conf %{buildroot}%{_sysconfdir}/%{name}/
