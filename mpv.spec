@@ -15,7 +15,6 @@ Source0:	https://github.com/mpv-player/mpv/archive/v%{version}.tar.gz
 Source1:	https://waf.io/pub/release/waf-2.0.11
 Source2:	mpv.conf
 Patch0:		mpv-0.23.0-dont-overreact-to-ffmpeg-mismatch.patch
-Patch1:		0001-vaapi-Use-libva2-message-callbacks.patch
 BuildRequires:	hicolor-icon-theme
 BuildRequires:	ladspa-devel
 BuildRequires:	pkgconfig(libavutil) >= 55.58.100
@@ -104,9 +103,6 @@ output methods are supported.
 
 %files
 %doc README.md Copyright etc/input.conf
-%{_docdir}/%{name}/mplayer-input.conf
-%{_docdir}/%{name}/mpv.conf
-%{_docdir}/%{name}/restore-old-bindings.conf
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
