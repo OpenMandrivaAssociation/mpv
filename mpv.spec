@@ -5,7 +5,7 @@
 
 Name:		mpv
 Version:	0.29.1
-Release:	6
+Release:	7
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
