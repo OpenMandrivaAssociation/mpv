@@ -1,3 +1,5 @@
+%global ldflags %{ldflags} -fuse-ld=bfd
+
 %define debug_package %{nil}
 %define major 1
 %define libname %mklibname %{name} %{major}
