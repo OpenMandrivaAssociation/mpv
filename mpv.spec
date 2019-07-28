@@ -1,8 +1,3 @@
-# Liker ldd causing build issue with mpv:
-# "ld: error: osdep/main-fn-unix.c.26.o is incompatible with elf_x86_64"
-# fixed by switch linker to bfd (angry)
-%global ldflags %{ldflags} -fuse-ld=bfd
-
 %define debug_package %{nil}
 %define major 1
 %define libname %mklibname %{name} %{major}
@@ -10,7 +5,7 @@
 
 Name:		mpv
 Version:	0.29.1
-Release:	9
+Release:	10
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
