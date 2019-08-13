@@ -1,3 +1,3 @@
 sources:
-  v0.29.1.tar.gz: 83f2bc0eb5a8bec9a9d5efc7de0e19a442238ac5
-  waf-2.0.11: 83c919049ac3c0a181ba27cc699297bbbaa01cea
+  master.tar.gz: 1fe5b65589af81edafa89c4b2cfc4743b0fb9aac
+  waf-2.0.18: edfc0da1e1246544b22e0910e48b41d2538535c3

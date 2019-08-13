@@ -3,16 +3,29 @@
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
 
+%define date 20190813
+
 Name:		mpv
-Version:	0.29.1
-Release:	10
+# We package git master instead of so-called stable releases
+# that have stopped happening.
+# As of 2019/08/13, the last "release" is almost a year old, and the
+# mpv project's definition of a "release" is
+# """
+# Every other month, an arbitrary git snapshot is made,
+# and is assigned a 0.X.0 version number. No further maintenance is done.
+# """
+# So any slightly tested snapshot is as good as the latest release.
+# Just keep the version number in sync with "releases" to make the
+# likes of repology and distrowatch happy.
+Version:	0.30.0
+Release:	0.%{date}.1
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
 URL:		http://mpv.io/
-Source0:	https://github.com/mpv-player/mpv/archive/v%{version}.tar.gz
+Source0:	https://github.com/mpv-player/mpv/archive/master.tar.gz
 # latest stable waf
-Source1:	https://waf.io/pub/release/waf-2.0.11
+Source1:	https://waf.io/pub/release/waf-2.0.18
 Source2:	mpv.conf
 Patch0:		mpv-0.23.0-dont-overreact-to-ffmpeg-mismatch.patch
 BuildRequires:	hicolor-icon-theme
@@ -161,7 +174,7 @@ output methods are supported.
 #----------------------------------------------------------------------------
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n mpv-master
 
 cp %{SOURCE1} waf
 chmod 0755 waf
