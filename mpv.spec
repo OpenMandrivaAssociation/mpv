@@ -16,7 +16,7 @@ Source0:	https://github.com/mpv-player/mpv/archive/v0.30.0/mpv-0.30.0.tar.gz
 # latest stable waf
 Source1:	https://waf.io/pub/release/waf-2.0.18
 Source2:	mpv.conf
-Patch0:		mpv-0.23.0-dont-overreact-to-ffmpeg-mismatch.patch
+#Patch0:		mpv-0.23.0-dont-overreact-to-ffmpeg-mismatch.patch
 BuildRequires:	hicolor-icon-theme
 BuildRequires:	ladspa-devel
 BuildRequires:	pkgconfig(libavutil) >= 56.6.100
