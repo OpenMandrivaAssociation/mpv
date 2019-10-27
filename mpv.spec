@@ -192,7 +192,6 @@ python ./waf configure \
 	--enable-gl-wayland \
 	--enable-egl-x11 \
 	--enable-vaapi \
-	--enable-vaapi-glx \
 	--enable-libmpv-shared
 
 python ./waf build --verbose
