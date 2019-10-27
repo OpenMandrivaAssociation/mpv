@@ -37,6 +37,7 @@ BuildRequires:	perl
 BuildRequires:	pkgconfig(gbm)
 BuildRequires:	pkgconfig(libdrm)
 BuildRequires:	pkgconfig(egl)
+BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(xrandr)
 BuildRequires:	pkgconfig(libarchive)
 BuildRequires:	pkgconfig(libpulse)
@@ -60,6 +61,7 @@ BuildRequires:	pkgconfig(libva)
 BuildRequires:	pkgconfig(libva-x11)
 BuildRequires:	pkgconfig(openal)
 BuildRequires:	pkgconfig(portaudio-2.0)
+BuildRequires:	pkgconfig(sdl2)
 BuildRequires:	pkgconfig(smbclient)
 BuildRequires:	pkgconfig(vdpau)
 BuildRequires:	pkgconfig(xext)
@@ -178,13 +180,19 @@ python ./waf configure \
 	--libdir="%{_libdir}" \
 	--docdir="%{_docdir}/%{name}" \
 	--confdir="%{_sysconfdir}/%{name}" \
-	--disable-sdl2 \
+	--enable-sdl2 \
 	--disable-build-date \
 	--disable-debug \
 	--enable-openal \
+	--enable-pulse \
 	--enable-cdda \
 	--enable-dvdnav \
 	--enable-dvbin \
+	--enable-wayland \
+	--enable-gl-wayland \
+	--enable-egl-x11 \
+	--enable-vaapi \
+	--enable-vaapi-glx \
 	--enable-libmpv-shared
 
 python ./waf build --verbose
