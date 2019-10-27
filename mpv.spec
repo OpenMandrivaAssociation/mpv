@@ -185,7 +185,6 @@ python ./waf configure \
 	--enable-cdda \
 	--enable-dvdnav \
 	--enable-dvbin \
-	--enable-tv \
 	--enable-libmpv-shared
 
 python ./waf build --verbose
