@@ -183,7 +183,6 @@ python ./waf configure \
 	--disable-debug \
 	--enable-openal \
 	--enable-cdda \
-	--enable-dvdread \
 	--enable-dvdnav \
 	--enable-dvbin \
 	--enable-tv \
