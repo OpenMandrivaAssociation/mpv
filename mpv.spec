@@ -64,7 +64,7 @@ BuildRequires:	pkgconfig(openal)
 BuildRequires:	pkgconfig(portaudio-2.0)
 BuildRequires:	pkgconfig(sdl2)
 # Samba in OMV is not available on i686 and ARMv7 (hard to fix build issue), so disable it for this arch (angry)
-%ifarch %{ix86} %{armv7}
+%ifnarch %{ix86} %{armv7}
 BuildRequires:	pkgconfig(smbclient)
 %endif
 BuildRequires:	pkgconfig(vdpau)
@@ -198,6 +198,8 @@ python ./waf configure \
 	--enable-vaapi \
 %ifarch %{ix86} %{armv7}
 	--disable-libsmbclient \
+%else
+	--enablee-libsmbclient \
 %endif
 	--enable-libmpv-shared
 
