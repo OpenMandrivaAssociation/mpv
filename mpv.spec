@@ -1,3 +1,7 @@
+%ifnarch %{ix86} %{armv7}
+%define _disable_ld_no_undefined 1
+%define _disable_lto 1
+%endif
 %define debug_package %{nil}
 %define major 1
 %define libname %mklibname %{name} %{major}
