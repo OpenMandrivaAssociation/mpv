@@ -1,3 +1,7 @@
+%ifarch %{ix86} %{arm}
+%define _disable_ld_no_undefined 1
+%define _disable_lto 1
+%endif
 %define debug_package %{nil}
 %define major 1
 %define libname %mklibname %{name} %{major}
@@ -7,7 +11,7 @@
 
 Name:		mpv
 Version:	0.31.0
-Release:	1
+Release:	2
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
@@ -63,7 +67,10 @@ BuildRequires:	pkgconfig(libva-x11)
 BuildRequires:	pkgconfig(openal)
 BuildRequires:	pkgconfig(portaudio-2.0)
 BuildRequires:	pkgconfig(sdl2)
+# Samba in OMV is not available on i686 and ARMv7 (hard to fix build issue), so disable it for this arch (angry)
+%ifnarch %{ix86} %{arm}
 BuildRequires:	pkgconfig(smbclient)
+%endif
 BuildRequires:	pkgconfig(vdpau)
 BuildRequires:	pkgconfig(xext)
 BuildRequires:	pkgconfig(xinerama)
@@ -172,6 +179,10 @@ cp %{SOURCE1} waf
 chmod 0755 waf
 
 %build
+%ifarch %{ix86}
+export CC=gcc
+export CXX=g++
+%endif
 %setup_compile_flags
 CCFLAGS="%{optflags}" \
 python ./waf configure \
@@ -193,6 +204,11 @@ python ./waf configure \
 	--enable-gl-wayland \
 	--enable-egl-x11 \
 	--enable-vaapi \
+%ifarch %{ix86} %{arm}
+	--disable-libsmbclient \
+%else
+	--enablee-libsmbclient \
+%endif
 	--enable-libmpv-shared
 
 python ./waf build --verbose
