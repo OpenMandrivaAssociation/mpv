@@ -179,6 +179,10 @@ cp %{SOURCE1} waf
 chmod 0755 waf
 
 %build
+%ifarch %{ix86}
+export CC=gcc
+export CXX=g++
+%endif
 %setup_compile_flags
 CCFLAGS="%{optflags}" \
 python ./waf configure \
