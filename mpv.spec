@@ -6,7 +6,7 @@
 %define date 20190813
 
 Name:		mpv
-Version:	0.30.0
+Version:	0.31.0
 Release:	1
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
