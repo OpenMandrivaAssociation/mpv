@@ -207,7 +207,7 @@ python ./waf configure \
 %ifarch %{ix86} %{arm}
 	--disable-libsmbclient \
 %else
-	--enablee-libsmbclient \
+	--enable-libsmbclient \
 %endif
 	--enable-libmpv-shared
 
