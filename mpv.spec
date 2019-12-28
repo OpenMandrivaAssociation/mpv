@@ -1,4 +1,4 @@
-%ifnarch %{ix86} %{armv7}
+%ifarch %{ix86} %{arm}
 %define _disable_ld_no_undefined 1
 %define _disable_lto 1
 %endif
@@ -68,7 +68,7 @@ BuildRequires:	pkgconfig(openal)
 BuildRequires:	pkgconfig(portaudio-2.0)
 BuildRequires:	pkgconfig(sdl2)
 # Samba in OMV is not available on i686 and ARMv7 (hard to fix build issue), so disable it for this arch (angry)
-%ifnarch %{ix86} %{armv7}
+%ifnarch %{ix86} %{arm}
 BuildRequires:	pkgconfig(smbclient)
 %endif
 BuildRequires:	pkgconfig(vdpau)
@@ -200,7 +200,7 @@ python ./waf configure \
 	--enable-gl-wayland \
 	--enable-egl-x11 \
 	--enable-vaapi \
-%ifarch %{ix86} %{armv7}
+%ifarch %{ix86} %{arm}
 	--disable-libsmbclient \
 %else
 	--enablee-libsmbclient \
