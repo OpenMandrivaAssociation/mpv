@@ -11,7 +11,7 @@
 
 Name:		mpv
 Version:	0.31.0
-Release:	2
+Release:	3
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
@@ -39,6 +39,7 @@ BuildRequires:	pkgconfig(liblircclient0)
 BuildRequires:	pkgconfig(lua)
 BuildRequires:	pkgconfig(ncurses)
 BuildRequires:	perl
+BuildRequires:	pkgconfig(mujs)
 BuildRequires:	pkgconfig(gbm)
 BuildRequires:	pkgconfig(libdrm)
 BuildRequires:	pkgconfig(egl)
