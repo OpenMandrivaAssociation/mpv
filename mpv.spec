@@ -39,7 +39,10 @@ BuildRequires:	pkgconfig(liblircclient0)
 BuildRequires:	pkgconfig(lua)
 BuildRequires:	pkgconfig(ncurses)
 BuildRequires:	perl
+# Mujs is broken in i686: libmujs.a: error adding symbols: file format not recognized
+%ifnarch %{ix86}
 BuildRequires:	pkgconfig(mujs)
+%endif
 BuildRequires:	pkgconfig(gbm)
 BuildRequires:	pkgconfig(libdrm)
 BuildRequires:	pkgconfig(egl)
