@@ -7,11 +7,11 @@
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
 
-%define date 20190813
+%define date 20200126
 
 Name:		mpv
-Version:	0.31.0
-Release:	4
+Version:	0.32.0
+Release:	1
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
