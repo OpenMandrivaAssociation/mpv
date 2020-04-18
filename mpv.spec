@@ -9,9 +9,15 @@
 
 %define date 20200126
 
+# Is this actually useful, given most people who use samba mount
+# the shares anyway?
+# Let's enable this (and the slew of dependencies it pulls) only
+# if and when we find a real use case...
+%bcond_with samba
+
 Name:		mpv
 Version:	0.32.0
-Release:	1
+Release:	2
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
@@ -71,9 +77,9 @@ BuildRequires:	pkgconfig(libva-x11)
 BuildRequires:	pkgconfig(openal)
 BuildRequires:	pkgconfig(portaudio-2.0)
 BuildRequires:	pkgconfig(sdl2)
-# Samba in OMV is not available on i686 and ARMv7 (hard to fix build issue), so disable it for this arch (angry)
-%ifnarch %{ix86} %{arm}
+%if %{with samba}
 BuildRequires:	pkgconfig(smbclient)
+Requires:	samba-libs
 %endif
 BuildRequires:	pkgconfig(vdpau)
 BuildRequires:	pkgconfig(xext)
@@ -209,10 +215,10 @@ python ./waf configure \
 	--enable-gl-wayland \
 	--enable-egl-x11 \
 	--enable-vaapi \
-%ifarch %{ix86} %{arm}
-	--disable-libsmbclient \
-%else
+%if %{with samba}
 	--enable-libsmbclient \
+%else
+	--disable-libsmbclient \
 %endif
 	--enable-libmpv-shared
 
@@ -226,3 +232,4 @@ cp etc/encoding-profiles.conf %{buildroot}%{_sysconfdir}/%{name}/
 cp %{SOURCE2} %{buildroot}%{_sysconfdir}/%{name}/mpv.conf
 
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
+echo 'NoDisplay=true' >>%{buildroot}%{_datadir}/applications/%{name}.desktop
