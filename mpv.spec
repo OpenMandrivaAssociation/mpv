@@ -17,7 +17,7 @@
 
 Name:		mpv
 Version:	0.32.0
-Release:	2
+Release:	3
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
@@ -27,6 +27,10 @@ Source0:	https://github.com/mpv-player/mpv/archive/v%{version}/%{name}-%{version
 Source1:	https://waf.io/pub/release/waf-2.0.18
 Source2:	mpv.conf
 #Patch0:		mpv-0.23.0-dont-overreact-to-ffmpeg-mismatch.patch
+# From Rockchip repos -- improves support for HW decoding support
+# on Rockchip SoCs
+Patch0:		https://github.com/rockchip-linux/mpv/commit/c696ef634f25daa0c499f1424f13e76631839f38.patch
+Patch1:		https://github.com/rockchip-linux/mpv/commit/22c019f4f4a95c727b38dd1b05e70d3f49d429e1.patch
 BuildRequires:	hicolor-icon-theme
 BuildRequires:	ladspa-devel
 BuildRequires:	pkgconfig(libavutil) >= 56.6.100
