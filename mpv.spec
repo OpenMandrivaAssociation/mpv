@@ -179,7 +179,7 @@ output methods are supported.
 %{_includedir}/%{name}/client.h
 %{_includedir}/%{name}/opengl_cb.h
 %{_includedir}/%{name}/stream_cb.h
-%{_includedir}/%{name}/qthelper.hpp
+#{_includedir}/%{name}/qthelper.hpp
 %{_includedir}/%{name}/render.h
 %{_includedir}/%{name}/render_gl.h
 %{_libdir}/*.so
