@@ -219,11 +219,6 @@ python ./waf configure \
 	--enable-gl-wayland \
 	--enable-egl-x11 \
 	--enable-vaapi \
-%if %{with samba}
-	--enable-libsmbclient \
-%else
-	--disable-libsmbclient \
-%endif
 	--enable-libmpv-shared
 
 python ./waf build --verbose
