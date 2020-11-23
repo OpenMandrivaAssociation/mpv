@@ -16,8 +16,8 @@
 %bcond_with samba
 
 Name:		mpv
-Version:	0.32.0
-Release:	3
+Version:	0.33.0
+Release:	1
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
@@ -179,7 +179,7 @@ output methods are supported.
 %{_includedir}/%{name}/client.h
 %{_includedir}/%{name}/opengl_cb.h
 %{_includedir}/%{name}/stream_cb.h
-%{_includedir}/%{name}/qthelper.hpp
+#{_includedir}/%{name}/qthelper.hpp
 %{_includedir}/%{name}/render.h
 %{_includedir}/%{name}/render_gl.h
 %{_libdir}/*.so
@@ -219,11 +219,6 @@ python ./waf configure \
 	--enable-gl-wayland \
 	--enable-egl-x11 \
 	--enable-vaapi \
-%if %{with samba}
-	--enable-libsmbclient \
-%else
-	--disable-libsmbclient \
-%endif
 	--enable-libmpv-shared
 
 python ./waf build --verbose
