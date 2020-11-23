@@ -85,6 +85,9 @@ BuildRequires:	pkgconfig(sdl2)
 BuildRequires:	pkgconfig(smbclient)
 Requires:	samba-libs
 %endif
+BuildRequires:	pkgconfig(rubberband)
+BuildRequires:	pkgconfig(uchardet)
+BuildRequires:	pkgconfig(vapoursynth)
 BuildRequires:	pkgconfig(vdpau)
 BuildRequires:	pkgconfig(xext)
 BuildRequires:	pkgconfig(xinerama)
@@ -108,6 +111,7 @@ BuildRequires:	pkgconfig(wayland-cursor)
 BuildRequires:	pkgconfig(wayland-scanner)
 BuildRequires:	pkgconfig(wayland-server)
 BuildRequires:	pkgconfig(xkbcommon)
+BuildRequires:	pkgconfig(zimg)
 BuildRequires:	vulkan-devel
 BuildRequires:	krb5-devel
 BuildRequires:	desktop-file-utils
@@ -218,7 +222,9 @@ python ./waf configure \
 	--enable-wayland \
 	--enable-gl-wayland \
 	--enable-egl-x11 \
+	--enable-gl-x11 \
 	--enable-vaapi \
+	--enable-rpi \
 	--enable-libmpv-shared
 
 python ./waf build --verbose
