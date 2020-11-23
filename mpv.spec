@@ -224,7 +224,6 @@ python ./waf configure \
 	--enable-egl-x11 \
 	--enable-gl-x11 \
 	--enable-vaapi \
-	--enable-rpi \
 	--enable-libmpv-shared
 
 python ./waf build --verbose
