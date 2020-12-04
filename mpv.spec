@@ -1,6 +1,5 @@
 %ifarch %{ix86} %{arm}
 %define _disable_ld_no_undefined 1
-%define _disable_lto 1
 %endif
 %define debug_package %{nil}
 %define major 1
@@ -17,7 +16,7 @@
 
 Name:		mpv
 Version:	0.33.0
-Release:	1
+Release:	2
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
@@ -40,7 +39,7 @@ BuildRequires:	pkgconfig(libswscale) >= 5.0.101
 BuildRequires:	pkgconfig(libavfilter) >= 7.0.101
 BuildRequires:	pkgconfig(libswresample) >= 3.0.100
 BuildRequires:	pkgconfig(ffnvcodec)
-BuildRequires:	jpeg-devel
+BuildRequires:	pkgconfig(libjpeg)
 BuildRequires:	pkgconfig(libmng)
 BuildRequires:	pkgconfig(libmpg123)
 BuildRequires:	pkgconfig(libquvi)
@@ -108,7 +107,7 @@ BuildRequires:	pkgconfig(wayland-cursor)
 BuildRequires:	pkgconfig(wayland-scanner)
 BuildRequires:	pkgconfig(wayland-server)
 BuildRequires:	pkgconfig(xkbcommon)
-BuildRequires:	vulkan-devel
+BuildRequires:	pkgconfig(vulkan)
 BuildRequires:	krb5-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	imagemagick
@@ -198,7 +197,7 @@ chmod 0755 waf
 export CC=gcc
 export CXX=g++
 %endif
-%setup_compile_flags
+%set_build_flags
 CCFLAGS="%{optflags}" \
 python ./waf configure \
 	--prefix="%{_prefix}" \
