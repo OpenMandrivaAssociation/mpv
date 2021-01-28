@@ -216,7 +216,9 @@ python ./waf configure \
 	--enable-dvbin \
 	--enable-wayland \
 	--enable-gl-wayland \
+	--enable-egl \
 	--enable-egl-x11 \
+	--enable-egl-drm \
 	--enable-vaapi \
 	--enable-libmpv-shared
 
