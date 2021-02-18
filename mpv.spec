@@ -1,6 +1,9 @@
 %ifarch %{ix86} %{arm}
 %define _disable_ld_no_undefined 1
 %endif
+
+%global optflags %{optflags} -O3
+
 %define debug_package %{nil}
 %define major 1
 %define libname %mklibname %{name} %{major}
@@ -16,14 +19,14 @@
 
 Name:		mpv
 Version:	0.33.0
-Release:	2
+Release:	3
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
 URL:		http://mpv.io/
 Source0:	https://github.com/mpv-player/mpv/archive/v%{version}/%{name}-%{version}.tar.gz
 # latest stable waf
-Source1:	https://waf.io/pub/release/waf-2.0.18
+Source1:	https://waf.io/pub/release/waf-2.0.22
 Source2:	mpv.conf
 #Patch0:		mpv-0.23.0-dont-overreact-to-ffmpeg-mismatch.patch
 # From Rockchip repos -- improves support for HW decoding support
