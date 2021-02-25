@@ -193,7 +193,7 @@ output methods are supported.
 
 cp %{SOURCE1} waf
 chmod +x waf
-if [ -x "$(pwd)/waf" ]; then
+if [ ! -x "$(pwd)/waf" ]; then
     echo "Missing waf. Exiting."
     exit 1
 fi
