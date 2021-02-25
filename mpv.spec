@@ -33,6 +33,7 @@ Source2:	mpv.conf
 # on Rockchip SoCs
 Patch0:		https://github.com/rockchip-linux/mpv/commit/c696ef634f25daa0c499f1424f13e76631839f38.patch
 Patch1:		https://github.com/rockchip-linux/mpv/commit/22c019f4f4a95c727b38dd1b05e70d3f49d429e1.patch
+
 BuildRequires:	hicolor-icon-theme
 BuildRequires:	ladspa-devel
 BuildRequires:	pkgconfig(libavutil) >= 56.6.100
@@ -119,14 +120,12 @@ BuildRequires:	kernel-release-headers
 Requires:	hicolor-icon-theme
 Suggests:	youtube-dl >= 2015.01.16
 
-
 %description
 Mpv is a movie player based on MPlayer and mplayer2. It supports a wide variety
 of video file formats, audio and video codecs, and subtitle types. Special
 input URL types are available to read input from a variety of sources other
 than disk files. Depending on platform, a variety of different video and audio
 output methods are supported.
-
 
 %files
 %doc README.md Copyright etc/input.conf
@@ -193,7 +192,11 @@ output methods are supported.
 %autosetup -p1
 
 cp %{SOURCE1} waf
-chmod 0755 waf
+chmod +x waf
+if [ -x "$(pwd)/waf" ]; then
+    echo "Missing waf. Exiting."
+    exit 1
+fi
 
 %build
 %ifarch %{ix86}
