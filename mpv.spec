@@ -4,7 +4,6 @@
 
 %global optflags %{optflags} -O3
 
-%define debug_package %{nil}
 %define major 1
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
@@ -19,7 +18,7 @@
 
 Name:		mpv
 Version:	0.33.1
-Release:	1
+Release:	2
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
