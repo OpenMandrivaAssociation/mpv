@@ -144,6 +144,7 @@ output methods are supported.
 %{_datadir}/icons/hicolor/symbolic/apps/mpv-symbolic.svg
 %{_datadir}/zsh/site-functions/_mpv
 %{_datadir}/bash-completion/completions/mpv
+%{_datadir}/metainfo/mpv.metainfo.xml
 %{_mandir}/man1/%{name}.*
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/encoding-profiles.conf
