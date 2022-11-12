@@ -17,8 +17,8 @@
 %bcond_with samba
 
 Name:		mpv
-Version:	0.34.1
-Release:	3
+Version:	0.35.0
+Release:	1
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
