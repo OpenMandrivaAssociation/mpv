@@ -115,7 +115,7 @@ BuildRequires:	krb5-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	imagemagick
 BuildRequires:	python-docutils
-BuildRequires:	kernel-release-headers
+#BuildRequires:	kernel-release-headers
 Requires:	hicolor-icon-theme
 Suggests:	youtube-dl >= 2015.01.16
 
