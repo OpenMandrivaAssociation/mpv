@@ -4,7 +4,7 @@
 
 %global optflags %{optflags} -O3
 
-%define major 1
+%define major 2
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
 
