@@ -4,7 +4,7 @@
 
 %global optflags %{optflags} -O3
 
-%define major 1
+%define major 2
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
 
@@ -17,8 +17,8 @@
 %bcond_with samba
 
 Name:		mpv
-Version:	0.34.1
-Release:	3
+Version:	0.35.0
+Release:	1
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
@@ -59,7 +59,6 @@ BuildRequires:	pkgconfig(gbm)
 BuildRequires:	pkgconfig(libdrm)
 BuildRequires:	pkgconfig(egl)
 BuildRequires:	pkgconfig(gl)
-BuildRequires:	pkgconfig(xrandr)
 BuildRequires:	pkgconfig(libarchive)
 BuildRequires:	pkgconfig(libpulse)
 BuildRequires:	pkgconfig(alsa)
@@ -77,6 +76,8 @@ BuildRequires:	pkgconfig(libcdio)
 BuildRequires:	pkgconfig(libcdio_cdda)
 BuildRequires:	pkgconfig(libcdio_paranoia)
 BuildRequires:	pkgconfig(libiso9660)
+BuildRequires:	pkgconfig(libpipewire-0.3)
+BuildRequires:	pkgconfig(libplacebo)
 BuildRequires:	pkgconfig(libudf)
 BuildRequires:	pkgconfig(libva)
 BuildRequires:	pkgconfig(libva-x11)
@@ -87,12 +88,18 @@ BuildRequires:	pkgconfig(sdl2)
 BuildRequires:	pkgconfig(smbclient)
 Requires:	samba-libs
 %endif
+BuildRequires:	pkgconfig(rubberband)
+BuildRequires:	pkgconfig(uchardet)
+BuildRequires:	pkgconfig(vapoursynth)
 BuildRequires:	pkgconfig(vdpau)
 BuildRequires:	pkgconfig(xext)
 BuildRequires:	pkgconfig(xinerama)
 BuildRequires:	pkgconfig(xscrnsaver)
+BuildRequires:	pkgconfig(xrandr)
+BuildRequires:	pkgconfig(xpresent)
 BuildRequires:	pkgconfig(xv)
 BuildRequires:	pkgconfig(xxf86vm)
+BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(luajit)
 BuildRequires:	texlive-cmap
@@ -111,11 +118,12 @@ BuildRequires:	pkgconfig(wayland-scanner)
 BuildRequires:	pkgconfig(wayland-server)
 BuildRequires:	pkgconfig(xkbcommon)
 BuildRequires:	pkgconfig(vulkan)
+BuildRequires:	pkgconfig(zimg)
 BuildRequires:	krb5-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	imagemagick
 BuildRequires:	python-docutils
-BuildRequires:	kernel-release-headers
+#BuildRequires:	kernel-release-headers
 Requires:	hicolor-icon-theme
 Suggests:	youtube-dl >= 2015.01.16
 
@@ -137,6 +145,7 @@ output methods are supported.
 %{_datadir}/icons/hicolor/symbolic/apps/mpv-symbolic.svg
 %{_datadir}/zsh/site-functions/_mpv
 %{_datadir}/bash-completion/completions/mpv
+%{_datadir}/metainfo/mpv.metainfo.xml
 %{_mandir}/man1/%{name}.*
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/encoding-profiles.conf
@@ -177,7 +186,7 @@ output methods are supported.
 %doc README.md Copyright
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/client.h
-%{_includedir}/%{name}/opengl_cb.h
+#{_includedir}/%{name}/opengl_cb.h
 %{_includedir}/%{name}/stream_cb.h
 #{_includedir}/%{name}/qthelper.hpp
 %{_includedir}/%{name}/render.h
