@@ -18,14 +18,14 @@
 
 Name:		mpv
 Version:	0.35.0
-Release:	1
+Release:	2
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
 URL:		http://mpv.io/
 Source0:	https://github.com/mpv-player/mpv/archive/v%{version}/%{name}-%{version}.tar.gz
 # latest stable waf
-Source1:	https://waf.io/pub/release/waf-2.0.22
+Source1:	https://waf.io/pub/release/waf-2.0.23
 Source2:	mpv.conf
 #Patch0:		mpv-0.23.0-dont-overreact-to-ffmpeg-mismatch.patch
 # From Rockchip repos -- improves support for HW decoding support
@@ -198,6 +198,9 @@ output methods are supported.
 
 %prep
 %autosetup -p1
+
+# Workaround for using a #define that isn't being set anywhere
+sed -i -e 's,#if HAVE_JPEGXL,#if 1,g' video/image_writer.c
 
 cp %{SOURCE1} waf
 chmod +x waf
