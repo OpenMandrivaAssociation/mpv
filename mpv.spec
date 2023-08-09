@@ -18,7 +18,7 @@
 
 Name:		mpv
 Version:	0.36.0
-Release:	1
+Release:	2
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
@@ -210,10 +210,6 @@ if [ ! -x "$(pwd)/waf" ]; then
 fi
 
 %build
-%ifarch %{ix86}
-export CC=gcc
-export CXX=g++
-%endif
 %set_build_flags
 CCFLAGS="%{optflags}" \
 python ./waf configure \
