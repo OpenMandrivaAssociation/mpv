@@ -17,21 +17,20 @@
 %bcond_with samba
 
 Name:		mpv
-Version:	0.36.0
-Release:	2
+Version:	0.37.0
+Release:	1
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
 URL:		http://mpv.io/
 Source0:	https://github.com/mpv-player/mpv/archive/v%{version}/%{name}-%{version}.tar.gz
-# latest stable waf
-Source1:	https://waf.io/pub/release/waf-2.0.23
-Source2:	mpv.conf
+Source1:	mpv.conf
 #Patch0:		mpv-0.23.0-dont-overreact-to-ffmpeg-mismatch.patch
 # From Rockchip repos -- improves support for HW decoding support
 # on Rockchip SoCs
 Patch0:		https://github.com/rockchip-linux/mpv/commit/c696ef634f25daa0c499f1424f13e76631839f38.patch
-Patch1:		https://github.com/rockchip-linux/mpv/commit/22c019f4f4a95c727b38dd1b05e70d3f49d429e1.patch
+# FIXME needs porting to 0.37.0
+#Patch1:		https://github.com/rockchip-linux/mpv/commit/22c019f4f4a95c727b38dd1b05e70d3f49d429e1.patch
 
 BuildRequires:	hicolor-icon-theme
 BuildRequires:	ladspa-devel
@@ -77,7 +76,7 @@ BuildRequires:	pkgconfig(libcdio_cdda)
 BuildRequires:	pkgconfig(libcdio_paranoia)
 BuildRequires:	pkgconfig(libiso9660)
 BuildRequires:	pkgconfig(libpipewire-0.3)
-BuildRequires:	pkgconfig(libplacebo)
+BuildRequires:	pkgconfig(libplacebo) >= 6.338.0
 BuildRequires:	pkgconfig(libudf)
 BuildRequires:	pkgconfig(libva)
 BuildRequires:	pkgconfig(libva-x11)
@@ -123,6 +122,8 @@ BuildRequires:	krb5-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	imagemagick
 BuildRequires:	python-docutils
+BuildRequires:	meson
+BuildRequires:	ninja
 #BuildRequires:	kernel-release-headers
 Requires:	hicolor-icon-theme
 Suggests:	youtube-dl >= 2015.01.16
@@ -202,47 +203,55 @@ output methods are supported.
 # Workaround for using a #define that isn't being set anywhere
 sed -i -e 's,#if HAVE_JPEGXL,#if 1,g' video/image_writer.c
 
-cp %{SOURCE1} waf
-chmod +x waf
-if [ ! -x "$(pwd)/waf" ]; then
-    echo "Missing waf. Exiting."
-    exit 1
-fi
+%meson \
+	-Dlibmpv=true \
+	-Dcdda=enabled \
+	-Ddvbin=enabled \
+	-Ddvdnav=enabled \
+	-Drubberband=enabled \
+	-Dsdl2=enabled \
+	-Dopenal=enabled \
+	-Dgl-x11=enabled \
+	-Dwin32-threads=disabled \
+	-Dcocoa=disabled \
+	-Dgl-cocoa=disabled \
+	-Dmacos-cocoa-cb=disabled \
+	-Dmacos-media-player=disabled \
+	-Dmacos-touchbar=disabled \
+	-Daudiounit=disabled \
+	-Dcoreaudio=disabled \
+	-Dopensles=disabled \
+	-Doss-audio=disabled \
+	-Dwasapi=disabled \
+	-Dgl-win32=disabled \
+	-Ddirect3d=disabled \
+	-Dd3d-hwaccel=disabled \
+	-Dd3d9-hwaccel=disabled \
+	-Dd3d11=disabled \
+	-Dgl-dxinterop-d3d9=disabled \
+	-Dgl-dxinterop=disabled \
+	-Dsixel=disabled \
+	-Dspirv-cross=disabled \
+	-Degl-angle=disabled \
+	-Degl-angle-lib=disabled \
+	-Degl-angle-win32=disabled \
+	-Degl-android=disabled \
+	-Dandroid-media-ndk=disabled \
+	-Dios-gl=disabled \
+	-Drpi-mmal=disabled \
+	-Dvideotoolbox-pl=disabled \
+	-Dvideotoolbox-gl=disabled \
+	-Dswift-build=disabled
 
 %build
-%set_build_flags
-CCFLAGS="%{optflags}" \
-python ./waf configure \
-	--prefix="%{_prefix}" \
-	--bindir="%{_bindir}" \
-	--mandir="%{_mandir}" \
-	--libdir="%{_libdir}" \
-	--docdir="%{_docdir}/%{name}" \
-	--confdir="%{_sysconfdir}/%{name}" \
-	--enable-sdl2 \
-	--disable-build-date \
-	--disable-debug \
-	--enable-openal \
-	--enable-pulse \
-	--enable-cdda \
-	--enable-dvdnav \
-	--enable-dvbin \
-	--enable-wayland \
-	--enable-gl-wayland \
-	--enable-egl \
-	--enable-egl-x11 \
-	--enable-egl-drm \
-	--enable-vaapi \
-	--enable-libmpv-shared
-
-python ./waf build --verbose
+%meson_build
 
 %install
-python ./waf --destdir=%{buildroot} install
+%meson_install
 
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}/
 cp etc/encoding-profiles.conf %{buildroot}%{_sysconfdir}/%{name}/
-cp %{SOURCE2} %{buildroot}%{_sysconfdir}/%{name}/mpv.conf
+cp %{S:1} %{buildroot}%{_sysconfdir}/%{name}/mpv.conf
 
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 echo 'NoDisplay=true' >>%{buildroot}%{_datadir}/applications/%{name}.desktop
