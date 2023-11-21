@@ -83,6 +83,7 @@ BuildRequires:	pkgconfig(libva-x11)
 BuildRequires:	pkgconfig(openal)
 BuildRequires:	pkgconfig(portaudio-2.0)
 BuildRequires:	pkgconfig(sdl2)
+BuildRequires:	pkgconfig(sndio)
 %if %{with samba}
 BuildRequires:	pkgconfig(smbclient)
 Requires:	samba-libs
