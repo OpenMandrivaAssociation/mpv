@@ -5,7 +5,8 @@
 %global optflags %{optflags} -O3
 
 %define major 2
-%define libname %mklibname %{name} %{major}
+%define oldlibname %mklibname %{name} 2
+%define libname %mklibname %{name}
 %define devname %mklibname %{name} -d
 
 %define date 20200126
@@ -18,7 +19,7 @@
 
 Name:		mpv
 Version:	0.37.0
-Release:	1
+Release:	2
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
@@ -157,6 +158,7 @@ output methods are supported.
 %package -n %{libname}
 Summary:	Library for %{name}
 Group:		System/Libraries
+%rename %{oldlibname}
 
 %description -n %{libname}
 Mpv is a movie player based on MPlayer and mplayer2. It supports a wide variety
