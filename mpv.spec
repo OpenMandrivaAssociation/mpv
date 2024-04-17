@@ -18,8 +18,8 @@
 %bcond_with samba
 
 Name:		mpv
-Version:	0.37.0
-Release:	3
+Version:	0.38.0
+Release:	1
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
@@ -32,7 +32,6 @@ Source1:	mpv.conf
 Patch0:		https://github.com/rockchip-linux/mpv/commit/c696ef634f25daa0c499f1424f13e76631839f38.patch
 # FIXME needs porting to 0.37.0
 #Patch1:		https://github.com/rockchip-linux/mpv/commit/22c019f4f4a95c727b38dd1b05e70d3f49d429e1.patch
-Patch2:		mpv-0.37.0-ffmpeg-7.0.patch
 
 BuildRequires:	hicolor-icon-theme
 BuildRequires:	ladspa-devel
@@ -242,9 +241,11 @@ sed -i -e 's,#if HAVE_JPEGXL,#if 1,g' video/image_writer.c
 	-Degl-android=disabled \
 	-Dandroid-media-ndk=disabled \
 	-Dios-gl=disabled \
-	-Drpi-mmal=disabled \
 	-Dvideotoolbox-pl=disabled \
 	-Dvideotoolbox-gl=disabled \
+	-Davfoundation=disabled \
+	-Dshaderc=disabled \
+	-Dvaapi-win32=disabled \
 	-Dswift-build=disabled
 
 %build
