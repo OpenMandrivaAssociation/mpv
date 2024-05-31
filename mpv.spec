@@ -19,7 +19,7 @@
 
 Name:		mpv
 Version:	0.38.0
-Release:	1
+Release:	2
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
@@ -259,4 +259,3 @@ cp etc/encoding-profiles.conf %{buildroot}%{_sysconfdir}/%{name}/
 cp %{S:1} %{buildroot}%{_sysconfdir}/%{name}/mpv.conf
 
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
-echo 'NoDisplay=true' >>%{buildroot}%{_datadir}/applications/%{name}.desktop
