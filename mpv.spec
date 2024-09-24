@@ -85,6 +85,7 @@ BuildRequires:	pkgconfig(openal)
 BuildRequires:	pkgconfig(portaudio-2.0)
 BuildRequires:	pkgconfig(sdl2)
 BuildRequires:	pkgconfig(sndio)
+BuildRequires:	pkgconfig(shaderc)
 %if %{with samba}
 BuildRequires:	pkgconfig(smbclient)
 Requires:	samba-libs
@@ -190,9 +191,7 @@ output methods are supported.
 %doc README.md Copyright
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/client.h
-#{_includedir}/%{name}/opengl_cb.h
 %{_includedir}/%{name}/stream_cb.h
-#{_includedir}/%{name}/qthelper.hpp
 %{_includedir}/%{name}/render.h
 %{_includedir}/%{name}/render_gl.h
 %{_libdir}/*.so
@@ -213,6 +212,8 @@ sed -i -e 's,#if HAVE_JPEGXL,#if 1,g' video/image_writer.c
 	-Ddvdnav=enabled \
 	-Drubberband=enabled \
 	-Dsdl2=enabled \
+ 	-Dsdl2-gamepad=enabled \
+  	-Dsdl2-audio=enabled \
 	-Dopenal=enabled \
 	-Dgl-x11=enabled \
 	-Dwin32-threads=disabled \
@@ -235,6 +236,7 @@ sed -i -e 's,#if HAVE_JPEGXL,#if 1,g' video/image_writer.c
 	-Dgl-dxinterop=disabled \
 	-Dsixel=disabled \
 	-Dspirv-cross=disabled \
+ 	-Dshaderc=disabled \
 	-Degl-angle=disabled \
 	-Degl-angle-lib=disabled \
 	-Degl-angle-win32=disabled \
@@ -244,9 +246,15 @@ sed -i -e 's,#if HAVE_JPEGXL,#if 1,g' video/image_writer.c
 	-Dvideotoolbox-pl=disabled \
 	-Dvideotoolbox-gl=disabled \
 	-Davfoundation=disabled \
-	-Dshaderc=disabled \
 	-Dvaapi-win32=disabled \
-	-Dswift-build=disabled
+	-Dswift-build=disabled \
+ 	-Dmacos-10-15-4-features=disabled \
+  	-Dmacos-11-features=disabled \
+   	-Dmacos-11-3-features=disabled \
+    	-Dmacos-12-features=disabled \
+     	-Dmacos-cocoa-cb=disabled \
+      	-Dmacos-media-player=disabled \
+       	-Dmacos-touchbar=disabled
 
 %build
 %meson_build
