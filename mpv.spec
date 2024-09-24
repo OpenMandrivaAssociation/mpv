@@ -246,7 +246,6 @@ sed -i -e 's,#if HAVE_JPEGXL,#if 1,g' video/image_writer.c
 	-Dvideotoolbox-pl=disabled \
 	-Dvideotoolbox-gl=disabled \
 	-Davfoundation=disabled \
-	-Dshaderc=disabled \
 	-Dvaapi-win32=disabled \
 	-Dswift-build=disabled \
  	-Dmacos-10-15-4-features=disabled \
