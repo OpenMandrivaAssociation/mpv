@@ -246,7 +246,9 @@ sed -i -e 's,#if HAVE_JPEGXL,#if 1,g' video/image_writer.c
 	-Davfoundation=disabled \
 	-Dshaderc=disabled \
 	-Dvaapi-win32=disabled \
-	-Dswift-build=disabled
+	-Dswift-build=disabled \
+ 	-Dvideotoolbox-gl=disabled \
+  	-Dvideotoolbox-pl=disabled
 
 %build
 %meson_build
