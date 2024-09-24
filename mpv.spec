@@ -214,7 +214,6 @@ sed -i -e 's,#if HAVE_JPEGXL,#if 1,g' video/image_writer.c
 	-Dsdl2=enabled \
  	-Dsdl2-gamepad=enabled \
   	-Dsdl2-audio=enabled \
-   	-Dshaderc=enabled \
 	-Dopenal=enabled \
 	-Dgl-x11=enabled \
 	-Dwin32-threads=disabled \
@@ -237,6 +236,7 @@ sed -i -e 's,#if HAVE_JPEGXL,#if 1,g' video/image_writer.c
 	-Dgl-dxinterop=disabled \
 	-Dsixel=disabled \
 	-Dspirv-cross=disabled \
+ 	-Dshaderc=disabled \
 	-Degl-angle=disabled \
 	-Degl-angle-lib=disabled \
 	-Degl-angle-win32=disabled \
