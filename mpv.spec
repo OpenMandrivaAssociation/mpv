@@ -85,6 +85,7 @@ BuildRequires:	pkgconfig(openal)
 BuildRequires:	pkgconfig(portaudio-2.0)
 BuildRequires:	pkgconfig(sdl2)
 BuildRequires:	pkgconfig(sndio)
+BuildRequires:	pkgconfig(shaderc)
 %if %{with samba}
 BuildRequires:	pkgconfig(smbclient)
 Requires:	samba-libs
@@ -211,6 +212,9 @@ sed -i -e 's,#if HAVE_JPEGXL,#if 1,g' video/image_writer.c
 	-Ddvdnav=enabled \
 	-Drubberband=enabled \
 	-Dsdl2=enabled \
+ 	-Dsdl2-gamepad=enabled \
+  	-Dsdl2-audio=enabled \
+   	-Dshaderc=enabled \
 	-Dopenal=enabled \
 	-Dgl-x11=enabled \
 	-Dwin32-threads=disabled \
