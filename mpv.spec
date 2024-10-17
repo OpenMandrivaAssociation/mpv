@@ -23,7 +23,7 @@ Release:	1
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
-URL:		http://mpv.io/
+URL:		https://mpv.io/
 Source0:	https://github.com/mpv-player/mpv/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:	mpv.conf
 #Patch0:		mpv-0.23.0-dont-overreact-to-ffmpeg-mismatch.patch
