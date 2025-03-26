@@ -75,6 +75,7 @@ BuildRequires:	pkgconfig(libbs2b)
 BuildRequires:	pkgconfig(libcdio)
 BuildRequires:	pkgconfig(libcdio_cdda)
 BuildRequires:	pkgconfig(libcdio_paranoia)
+BuildRequires:	pkgconfig(libdisplay-info)
 BuildRequires:	pkgconfig(libiso9660)
 BuildRequires:	pkgconfig(libpipewire-0.3)
 BuildRequires:	pkgconfig(libplacebo) >= 6.338.0
