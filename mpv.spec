@@ -32,6 +32,7 @@ Source1:	mpv.conf
 Patch0:		https://github.com/rockchip-linux/mpv/commit/c696ef634f25daa0c499f1424f13e76631839f38.patch
 # FIXME needs porting to 0.37.0
 #Patch1:		https://github.com/rockchip-linux/mpv/commit/22c019f4f4a95c727b38dd1b05e70d3f49d429e1.patch
+Patch2:		mpv-ffmpeg-8.0.patch
 
 BuildRequires:	hicolor-icon-theme
 BuildRequires:	ladspa-devel
