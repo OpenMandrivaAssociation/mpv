@@ -19,7 +19,7 @@
 
 Name:		mpv
 Version:	0.40.0
-Release:	3
+Release:	4
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
@@ -95,7 +95,6 @@ Requires:	samba-libs
 BuildRequires:	pkgconfig(rubberband)
 BuildRequires:	pkgconfig(uchardet)
 BuildRequires:	pkgconfig(vapoursynth)
-BuildRequires:	pkgconfig(vdpau)
 BuildRequires:	pkgconfig(xext)
 BuildRequires:	pkgconfig(xinerama)
 BuildRequires:	pkgconfig(xscrnsaver)
@@ -247,6 +246,7 @@ sed -i -e 's,#if HAVE_JPEGXL,#if 1,g' video/image_writer.c
 	-Degl-android=disabled \
 	-Dandroid-media-ndk=disabled \
 	-Dios-gl=disabled \
+	-Dvdpau=disabled \
 	-Dvideotoolbox-pl=disabled \
 	-Dvideotoolbox-gl=disabled \
 	-Davfoundation=disabled \
