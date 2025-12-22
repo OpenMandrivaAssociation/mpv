@@ -9,8 +9,6 @@
 %define libname %mklibname %{name}
 %define devname %mklibname %{name} -d
 
-%define date 20200126
-
 # Is this actually useful, given most people who use samba mount
 # the shares anyway?
 # Let's enable this (and the slew of dependencies it pulls) only
@@ -18,8 +16,8 @@
 %bcond_with samba
 
 Name:		mpv
-Version:	0.40.0
-Release:	4
+Version:	0.41.0
+Release:	1
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
@@ -32,7 +30,6 @@ Source1:	mpv.conf
 Patch0:		https://github.com/rockchip-linux/mpv/commit/c696ef634f25daa0c499f1424f13e76631839f38.patch
 # FIXME needs porting to 0.37.0
 #Patch1:		https://github.com/rockchip-linux/mpv/commit/22c019f4f4a95c727b38dd1b05e70d3f49d429e1.patch
-Patch2:		mpv-ffmpeg-8.0.patch
 
 BuildRequires:	hicolor-icon-theme
 BuildRequires:	ladspa-devel
@@ -141,6 +138,7 @@ output methods are supported.
 
 %files
 %doc README.md Copyright etc/input.conf
+%{_docdir}/%{name}/encoding-profiles.conf
 %{_docdir}/%{name}/mplayer-input.conf
 %{_docdir}/%{name}/mpv.conf
 %{_docdir}/%{name}/restore-old-bindings.conf
@@ -214,7 +212,6 @@ sed -i -e 's,#if HAVE_JPEGXL,#if 1,g' video/image_writer.c
 	-Ddvbin=enabled \
 	-Ddvdnav=enabled \
 	-Drubberband=enabled \
-	-Dsdl2=enabled \
  	-Dsdl2-gamepad=enabled \
   	-Dsdl2-audio=enabled \
 	-Dopenal=enabled \
@@ -225,6 +222,8 @@ sed -i -e 's,#if HAVE_JPEGXL,#if 1,g' video/image_writer.c
 	-Dmacos-cocoa-cb=disabled \
 	-Dmacos-media-player=disabled \
 	-Dmacos-touchbar=disabled \
+	-Daaudio=disabled \
+	-Daudiotrack=disabled \
 	-Daudiounit=disabled \
 	-Dcoreaudio=disabled \
 	-Dopensles=disabled \
