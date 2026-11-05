@@ -16,8 +16,8 @@
 %bcond_with samba
 
 Name:		mpv
-Version:	0.41.0
-Release:	5
+Version:	0.42.0
+Release:	1
 Summary:	Movie player playing most video formats and DVDs
 Group:		Video
 License:	GPLv2+
@@ -25,9 +25,8 @@ URL:		https://mpv.io/
 Source0:	https://github.com/mpv-player/mpv/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:	mpv.conf
 #Patch0:		mpv-0.23.0-dont-overreact-to-ffmpeg-mismatch.patch
-# From Rockchip repos -- improves support for HW decoding support
-# on Rockchip SoCs
-Patch0:		https://github.com/rockchip-linux/mpv/commit/c696ef634f25daa0c499f1424f13e76631839f38.patch
+# Rockchip XV: advertise NV12. The old commit URL no longer resolves.
+Patch0:		mpv-xv-nv12.patch
 # FIXME needs porting to 0.37.0
 #Patch1:		https://github.com/rockchip-linux/mpv/commit/22c019f4f4a95c727b38dd1b05e70d3f49d429e1.patch
 
@@ -76,7 +75,8 @@ BuildRequires:	pkgconfig(libcdio_paranoia)
 BuildRequires:	pkgconfig(libdisplay-info)
 BuildRequires:	pkgconfig(libiso9660)
 BuildRequires:	pkgconfig(libpipewire-0.3)
-BuildRequires:	pkgconfig(libplacebo) >= 6.338.0
+BuildRequires:	pkgconfig(libplacebo) >= 7.387.0
+BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	pkgconfig(libudf)
 BuildRequires:	pkgconfig(libva)
 BuildRequires:	pkgconfig(libva-x11)
@@ -195,6 +195,7 @@ output methods are supported.
 %{_includedir}/%{name}/stream_cb.h
 %{_includedir}/%{name}/render.h
 %{_includedir}/%{name}/render_gl.h
+%{_includedir}/%{name}/render_d3d11.h
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/%{name}.pc
 
@@ -203,14 +204,12 @@ output methods are supported.
 %prep
 %autosetup -p1
 
-# Workaround for using a #define that isn't being set anywhere
-sed -i -e 's,#if HAVE_JPEGXL,#if 1,g' video/image_writer.c
-
 %meson \
 	-Dlibmpv=true \
 	-Dcdda=enabled \
 	-Ddvbin=enabled \
 	-Ddvdnav=enabled \
+	-Dlibcurl=enabled \
 	-Drubberband=enabled \
  	-Dsdl2-gamepad=enabled \
   	-Dsdl2-audio=enabled \
