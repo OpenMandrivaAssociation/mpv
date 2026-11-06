@@ -209,6 +209,8 @@ output methods are supported.
 	-Dcdda=enabled \
 	-Ddvbin=enabled \
 	-Ddvdnav=enabled \
+	-Ddvda=disabled \
+	-Dsubrandr=disabled \
 	-Dlibcurl=enabled \
 	-Drubberband=enabled \
  	-Dsdl2-gamepad=enabled \
