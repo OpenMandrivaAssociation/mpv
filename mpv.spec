@@ -233,6 +233,7 @@ output methods are supported.
 	-Dgl-win32=disabled \
 	-Ddirect3d=disabled \
 	-Dd3d-hwaccel=disabled \
+	-Damf=disabled \
 	-Dd3d9-hwaccel=disabled \
 	-Dd3d11=disabled \
 	-Dgl-dxinterop-d3d9=disabled \
